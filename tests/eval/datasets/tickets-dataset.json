@@ -1,0 +1,151 @@
+{
+  "eval_cases": [
+    {
+      "eval_case_id": "card_double_charge",
+      "prompt": {
+        "role": "user",
+        "parts": [
+          {
+            "text": "Hello, my card 4111 1111 1111 1111 was charged twice for the same order on 2026-10-28, EUR 89.90 each time. Please refund the duplicate charge as soon as possible, I am short on money this week."
+          }
+        ]
+      },
+      "reference": {
+        "response": {
+          "role": "model",
+          "parts": [
+            {
+              "text": "twice|double|duplicate;refund"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "eval_case_id": "iban_wrong_payout",
+      "prompt": {
+        "role": "user",
+        "parts": [
+          {
+            "text": "Our weekly payout of EUR 4,310.00 went to the wrong account. The IBAN on file should end 0130 00 but the money was sent to DE89 3704 0044 0532 0130 00 instead. We need the payout re-sent to the right IBAN GB29 NWBK 6016 1331 9268 19. This is blocking our payroll on Friday."
+          }
+        ]
+      },
+      "reference": {
+        "response": {
+          "role": "model",
+          "parts": [
+            {
+              "text": "payout;wrong|incorrect;payroll|friday"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "eval_case_id": "name_phone_callback",
+      "prompt": {
+        "role": "user",
+        "parts": [
+          {
+            "text": "Hi, my name is Jonas Testmann. I cannot log in to the merchant dashboard since the password reset. Please call me back on +44 20 7946 0958 today.\nRegards,\nJonas Testmann"
+          }
+        ]
+      },
+      "reference": {
+        "response": {
+          "role": "model",
+          "parts": [
+            {
+              "text": "log in|login|dashboard;password;call"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "eval_case_id": "very_short",
+      "prompt": {
+        "role": "user",
+        "parts": [
+          {
+            "text": "Refund pending 3 weeks, still nothing!!"
+          }
+        ]
+      },
+      "reference": {
+        "response": {
+          "role": "model",
+          "parts": [
+            {
+              "text": "refund;3 weeks|three weeks|pending"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "eval_case_id": "email_chargeback",
+      "prompt": {
+        "role": "user",
+        "parts": [
+          {
+            "text": "I received a chargeback notification for a transaction I never made. Reply to maria.fake@example.test. The disputed amount is USD 640.00 and the deadline to respond is 2026-11-05. Please tell me how to submit evidence."
+          }
+        ]
+      },
+      "reference": {
+        "response": {
+          "role": "model",
+          "parts": [
+            {
+              "text": "chargeback|dispute;evidence;11-05|nov"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "eval_case_id": "fx_fee_question",
+      "prompt": {
+        "role": "user",
+        "parts": [
+          {
+            "text": "Ms. Olivia Notreal here. Why was I charged a 3.5% foreign exchange fee on my GBP to EUR transfer of 2,000 pounds? The pricing page says 1.5%. No rush, just want an explanation and a correction if it is a mistake."
+          }
+        ]
+      },
+      "reference": {
+        "response": {
+          "role": "model",
+          "parts": [
+            {
+              "text": "fee|fx|exchange;1.5|correct|explanation"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "eval_case_id": "terminal_down_urgent",
+      "prompt": {
+        "role": "user",
+        "parts": [
+          {
+            "text": "URGENT: all 4 card terminals in our shop stopped accepting payments at 09:00 this morning, error code E-4021. We are losing sales every minute. Contact: 0612345678 or ops@shop-example.test. Mr Pieter Fakeman, store manager."
+          }
+        ]
+      },
+      "reference": {
+        "response": {
+          "role": "model",
+          "parts": [
+            {
+              "text": "terminal;e-4021|4021|not accepting|stopped;urgent|high"
+            }
+          ]
+        }
+      }
+    }
+  ]
+}

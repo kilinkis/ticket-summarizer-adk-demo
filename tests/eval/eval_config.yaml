@@ -1,0 +1,12 @@
+metrics_to_run:
+  - no_pii
+  - max_3_lines
+  - key_facts
+
+custom_metrics:
+  - name: no_pii
+    custom_function_file: check_no_pii.py
+  - name: max_3_lines
+    custom_function_file: check_max_3_lines.py
+  - name: key_facts
+    custom_function_file: check_key_facts.py
