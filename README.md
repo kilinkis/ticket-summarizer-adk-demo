@@ -8,6 +8,24 @@ Summarizes one payments support ticket in at most 3 lines. PII is removed **befo
 - `app/prompt.txt`: the summarizer prompt (`prompts_history/v1.txt` is the first version).
 - Scaffolded with `agents-cli scaffold create ticket_summarizer -a adk -d none -p -s -y` (no deployment target, prototype).
 
+```mermaid
+flowchart LR
+    T[Raw ticket] --> P["RedactionPlugin<br/>on_user_message_callback"]
+    P -->|"redacted text only"| S[(Session + traces)]
+    P --> M["Gemini<br/>prompt.txt"]
+    M --> O["Summary<br/>max 3 lines"]
+
+    subgraph E["Evals (agents-cli eval run) - not yet run"]
+        D[tickets-dataset.json] --> A[Local ADK server + agent]
+        A --> C["3 checks: no PII,<br/>max 3 lines, key facts"]
+        C --> R[Results JSON]
+        R --> CMP["eval compare<br/>v1 vs v2"]
+    end
+    O -.-> C
+```
+
+Everything before the model call is deterministic. The raw ticket never reaches the session, the traces or the model. The eval half of the diagram is the intended flow and has not been run yet (see Status / TODO).
+
 ## Run
 ```bash
 export GEMINI_API_KEY="..."        # free AI Studio key; never put it in a file in this repo
